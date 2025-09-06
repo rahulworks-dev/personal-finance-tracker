@@ -1,0 +1,76 @@
+.hero-container {
+  width: 100%;
+  height: fit-content;
+  box-shadow: var(--box-shadow);
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+
+  @media (max-width: 767px) {
+    padding: 1rem 0.5rem;
+    row-gap: 0.5rem;
+  }
+  &-col {
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-right: 1px solid var(--light-grey);
+    &:last-child {
+      border-right: none;
+    }
+    h2 {
+      font-weight: 600;
+      font-family: "Roboto";
+      letter-spacing: 0.5px;
+      line-height: 2rem;
+      @media (max-width: 767px) {
+        font-size: 18px;
+        line-height: 1.5rem;
+      }
+    }
+    h5 {
+      opacity: 0.7;
+      display: flex;
+      align-items: center;
+
+      mat-icon {
+        font-size: 18px;
+        height: fit-content;
+      }
+    }
+
+    @media (max-width: 767px) {
+      width: 50%;
+      border-right: none;
+      &:first-child {
+        border-right: 1px solid var(--light-grey);
+      }
+      &:last-child {
+        border-top: 1px solid var(--light-grey);
+        width: 100%;
+        padding-top: 1rem;
+        @media (max-width: 767px) {
+          padding-top: 0.5rem;
+        }
+      }
+    }
+  }
+  .income {
+    h2 {
+      color: var(--green);
+    }
+  }
+  .expense {
+    h2 {
+      color: var(--red);
+    }
+  }
+  .balance {
+    h2 {
+      color: var(--blue);
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<div class="hero-container d-flex align-center">
+  <div class="hero-container-col income">
+    <h5>Total Income <mat-icon>attach_money</mat-icon></h5>
+    <h2>₹{{ formattedDetails.totalIncome | amount }}</h2>
+  </div>
+  <div class="hero-container-col expense">
+    <h5>Total Expense<mat-icon>money_off</mat-icon></h5>
+    <h2>₹{{ formattedDetails.totalExpense | amount }}</h2>
+  </div>
+  <div class="hero-container-col balance">
+    <h5>Balance<mat-icon>insert_chart</mat-icon></h5>
+    <h2>₹{{ formattedDetails.balance | amount }}</h2>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+@import url(./app/shared/styles/var.scss);
+
+* {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--grey);
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.gap-5px {
+  gap: 5px;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.clickable {
+  transition: all 0.5s ease-in-out;
+  cursor: pointer !important;
+  user-select: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.clickable:active {
+  transform: scale(0.95);
+  opacity: 0.7;
+  transition: all 0.1s ease-in-out;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.success-toast {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.error-toast {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.danger {
+  color: var(--red) !important;
+}
+
+.success {
+  color: var(--green) !important;
+}
+
+.txt-white {
+  color: var(--white);
+}

@@ -1,0 +1,80 @@
+.transaction-details-container {
+  height: fit-content;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  border: 1px solid var(--light-grey);
+  .row {
+    border-bottom: 1px solid var(--light-grey);
+    padding: 0.7rem 1rem;
+    &:hover {
+      background-color: var(--grey);
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+    .left {
+      max-width: 60%;
+      .title {
+        font-size: 14px;
+        display: block;
+        .category {
+          text-wrap-mode: nowrap;
+          font-size: 9px;
+          border-radius: 8px;
+          padding: 2px 8px;
+          color: var(--white);
+          vertical-align: middle;
+        }
+      }
+      .desc {
+        font-size: 12px;
+        opacity: 0.6;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* number of lines to show */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .date {
+        font-size: 12px;
+        opacity: 0.5;
+      }
+    }
+    .right {
+      p {
+        font-weight: 600;
+        font-family: "Roboto";
+        font-size: 18px;
+        @media (max-width: 767px) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  @media (max-width: 767px) {
+    box-shadow: none;
+    background: var(--white);
+    border: none;
+    border-radius: 0;
+  }
+}
+
+::ng-deep .mat-mdc-menu-content {
+  background-color: var(--white) !important;
+}
+
+.delete {
+  color: var(--red);
+}
+
+::ng-deep .mat-mdc-icon-button {
+  border-radius: 0 !important;
+  justify-content: flex-end !important;
+  display: flex !important;
+  padding: 0 !important;
+  height: fit-content !important;
+  width: fit-content !important;
+}
+
+

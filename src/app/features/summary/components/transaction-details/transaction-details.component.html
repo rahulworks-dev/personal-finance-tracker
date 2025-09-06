@@ -1,0 +1,56 @@
+<div
+  class="transaction-details-container"
+  *ngIf="transactions && transactions.length"
+>
+  <div
+    class="row d-flex align-center justify-between"
+    *ngFor="let transaction of transactions"
+  >
+    <div class="left">
+      <p class="title d-flex align-center gap-5px">
+        {{ transaction.title }}
+        <span
+          class="category"
+          [ngStyle]="{ backgroundColor: transaction.category.color }"
+          *ngIf="transaction.category.name !== 'Select Category'"
+          >{{ transaction.category.name }}</span
+        >
+      </p>
+      <p class="desc">{{ transaction.description }}</p>
+      <p class="date">{{ transaction.date | date : "YYYY, MMM dd" }}</p>
+    </div>
+    <div class="right d-flex align-center gap-5px">
+      <p
+        [ngClass]="{
+          success: transaction.type === 'Income',
+          danger: transaction.type === 'Expense'
+        }"
+      >
+        ₹{{ transaction.amount }}
+      </p>
+      <button
+        class="mat-icon-button"
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        (click)="onMenuOpen(transaction)"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="!transactions || !transactions.length">
+  <app-no-data></app-no-data>
+</ng-container>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="onEdit(selectedItem)">
+    <mat-icon>edit</mat-icon>
+    <span>Edit</span>
+  </button>
+  <button class="delete" mat-menu-item (click)="onDelete(selectedItem)">
+    <mat-icon>delete</mat-icon>
+    <span>Delete</span>
+  </button>
+</mat-menu>

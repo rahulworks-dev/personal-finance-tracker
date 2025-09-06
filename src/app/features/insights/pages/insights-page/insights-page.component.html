@@ -1,0 +1,52 @@
+<div class="insights-container">
+  <div class="insights-container-header d-flex align-center">
+    <h1>Insights</h1>
+  </div>
+  <div class="charts" *ngIf="!hasNoData">
+    <div class="chart">
+      <p>Income Distribution by Category</p>
+      <div
+        class="canvas-container"
+        *ngIf="incomeBarChartData.datasets[0].data.length"
+      >
+        <canvas
+          baseChart
+          [datasets]="incomeBarChartData.datasets"
+          [labels]="incomeBarChartData.labels"
+          [options]="barChartOptions"
+          type="bar"
+        >
+        </canvas>
+      </div>
+    </div>
+    <div class="chart">
+      <p>Expense Breakdown by Category</p>
+      <div
+        class="canvas-container"
+        *ngIf="expenseBarChartData.datasets[0].data.length"
+      >
+        <canvas
+          baseChart
+          [datasets]="expenseBarChartData.datasets"
+          [labels]="expenseBarChartData.labels"
+          [options]="barChartOptions"
+          type="bar"
+        >
+        </canvas>
+      </div>
+    </div>
+    <div class="chart">
+      <p>Financial Health at a Glance</p>
+      <canvas
+        baseChart
+        [data]="pieChartData"
+        [options]="pieChartOptions"
+        type="doughnut"
+      >
+      </canvas>
+    </div>
+  </div>
+  <ng-container *ngIf="hasNoData">
+    <app-no-data></app-no-data>
+  </ng-container>
+</div>

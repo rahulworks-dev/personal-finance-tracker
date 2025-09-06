@@ -1,0 +1,94 @@
+<div class="transaction-container">
+  <div class="transaction-container-header d-flex align-center">
+    <h1>{{ mode | titlecase }} Transaction</h1>
+  </div>
+  <div class="add-form">
+    <div class="row transaction-type-container">
+      <div class="type d-flex">
+        <div
+          class="indicator"
+          [class.move-indicator]="activeTransactionType === 'EX'"
+        ></div>
+        <div
+          (click)="
+            activeTransactionType = 'IN';
+            transactionForm
+              .get('category')
+              ?.setValue(transactionCategories.IN[0])
+          "
+        >
+          <p [class.txt-white]="activeTransactionType === 'IN'">Income</p>
+        </div>
+        <div
+          (click)="
+            activeTransactionType = 'EX';
+            transactionForm
+              .get('category')
+              ?.setValue(transactionCategories.EX[0])
+          "
+        >
+          <p [class.txt-white]="activeTransactionType === 'EX'">Expense</p>
+        </div>
+      </div>
+    </div>
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+      <div class="row second d-flex justify-between">
+        <div class="col">
+          <input
+            placeholder="Enter Title*"
+            type="text"
+            formControlName="title"
+          />
+        </div>
+        <div class="col">
+          <select
+            placeholder="Enter Category"
+            formControlName="category"
+            [compareWith]="compareCategory"
+          >
+            <option
+              *ngFor="
+                let option of transactionCategories[activeTransactionType]
+              "
+              [ngValue]="option"
+            >
+              {{ option.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="row second d-flex justify-between">
+        <div class="col">
+          <input
+            placeholder="Enter Amount*"
+            type="tel"
+            formControlName="amount"
+            (keyup)="onAmount($event)"
+          />
+        </div>
+        <div class="col">
+          <input placeholder="Enter Date" type="date" formControlName="date" />
+        </div>
+      </div>
+      <div class="row third">
+        <textarea
+          placeholder="Enter Optional Short Description Here..."
+          rows="3"
+          maxlength="100"
+          cols="100"
+          formControlName="description"
+        ></textarea>
+      </div>
+      <div class="save">
+        <button
+          type="submit"
+          [disabled]="transactionForm.invalid"
+          [class.disabled]="transactionForm.invalid"
+          [class.clickable]="transactionForm.valid"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
